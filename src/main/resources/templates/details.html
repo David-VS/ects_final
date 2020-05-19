@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--  Needed for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>students</title>
+    <!--  Stylesheets -->
+    <link rel="stylesheet" th:href="@{/general.css}">
+</head>
+<body>
+<div id="content" class="container">
+    <form th:action="@{/details/{id}(id = ${course.id})}" method="post" th:object="${content}">
+        <label for="name">Name</label>
+        <input id="name" placeholder="tussen 3 en 30 karakters" th:field="*{name}">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:class="error"></span>
+        <br>
+        <input type="submit">
+    </form>
+    <table th:object="${course}">
+        <tr th:each="content : ${course.getContents()}">
+            <td th:text="${content.name}"></td>
+        </tr>
+    </table>
+
+    <a th:href="@{~/index}">Return to overview</a>
+</div>
+</body>
+</html>

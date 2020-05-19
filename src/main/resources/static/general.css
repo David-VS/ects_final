@@ -26,3 +26,34 @@ nav ul li a{
 #container{
     margin-top: 60px;
 }
+
+thead{
+    font-family: Verdana serif;
+    font-size: 2em;
+    color: GrayText;
+}
+
+tr{
+    background-color: white;
+    color: black;
+}
+
+tr:nth-child(even){
+    background-color: gray;
+    color: white;
+}
+
+.error{
+    color: #ff0000;
+}
+
+.errorpage{
+    background: url("/Images/droids.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    color: aliceblue;
+
+}

@@ -10,6 +10,27 @@
     <nav th:replace="~{menu::main_nav}"></nav>
     <div id="container">
         <h1 th:text="#{index.title_overview}"></h1>
+        <form th:action="@{/index}" method="post" th:object="${new_course}">
+            <label for="name">Name</label>
+            <input id="name" placeholder="tussen 3 en 30 karakters" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:class="error"></span>
+            <br>
+            <input type="submit">
+        </form>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="course : ${all}">
+                <td><span th:text="${course.name}"></span></td>
+                <td><a class="btn" th:href="@{/details/{id}(id = ${course.id})}">Details</a></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

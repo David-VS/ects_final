@@ -2,21 +2,21 @@ package be.ehb.ects.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-public class Course {
+public class CourseContent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Size(min = 3, max = 40, message = "{validation.name}")
     private String name;
-    @OneToMany(mappedBy = "course")
-    private List<CourseContent> contents = new ArrayList<>();
 
-    public Course() {
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
+
+    public CourseContent() {
     }
 
     public int getId() {
@@ -35,11 +35,11 @@ public class Course {
         this.name = name;
     }
 
-    public List<CourseContent> getContents() {
-        return contents;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setContents(List<CourseContent> contents) {
-        this.contents = contents;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }
